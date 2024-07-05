@@ -30,7 +30,12 @@ Start container
 docker compose up -d 
 ```
 
-- Document root is automatically set to /public, to make changes go to /services/apache/000-default.conf and change configuration
+Services ports:
+- webserver http://localhost:8082
+- mysql http://localhost:3306
+- phpmyadmin http://localhost:8081
+
+Document root is automatically set to /public, to make changes go to /services/apache/000-default.conf and change configuration
 
 ```bash
 <VirtualHost *:80>
