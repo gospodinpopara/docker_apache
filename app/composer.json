@@ -1,6 +1,6 @@
 {
   "name": "github.com/gospodinpopara",
-  "description": "Docker apache demo",
+  "description": "Docker apache demo by popi :D",
   "require": {
     "php": "^8.3",
     "ext-pdo": "*",
