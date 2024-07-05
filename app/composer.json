@@ -1,0 +1,9 @@
+{
+  "name": "github.com/gospodinpopara",
+  "description": "Docker apache demo",
+  "require": {
+    "php": "^8.3",
+    "ext-pdo": "*",
+    "ext-pdo_mysql": "*"
+  }
+}

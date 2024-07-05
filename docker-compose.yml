@@ -1,0 +1,54 @@
+version: '3.2'
+
+networks:
+  php-apache-mysql-network:
+
+services:
+
+  # PHP APACHE + COMPOSER + NODEJS + COMPOSER 2.4
+  php83_apache-service:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "8082:80"
+    depends_on:
+      - mysql8-service
+    container_name: php83_apache-container
+    volumes:
+      - ./app:/var/www/html
+    networks:
+      - php-apache-mysql-network
+
+  # MYSQL
+  mysql8-service:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: admin12345
+      MYSQL_DATABASE: test_db
+      MYSQL_USER: popi
+      MYSQL_PASSWORD: 12345
+    ports:
+      - "3306:3306"
+    container_name: mysql8_container
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - php-apache-mysql-network
+
+  # PHPMYADMIN
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - mysql8-service
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mysql8-service
+      MYSQL_ROOT_PASSWORD: admin12345
+    container_name: phpmyadmin_container
+    networks:
+      - php-apache-mysql-network
+
+volumes:
+  mysql_data:
