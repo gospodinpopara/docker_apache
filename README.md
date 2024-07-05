@@ -20,12 +20,12 @@ Clone repository
 git clone <repo>
 ```
 
-Build docker containers
+Build  containers
 ```bash
 docker compose build
 ```
 
-start container
+Start container
 ```bash
 docker compose up -d 
 ```
